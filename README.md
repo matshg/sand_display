@@ -19,11 +19,15 @@ Datasheet: http://www.issi.com/WW/pdf/31FL3731.pdf
 To control the LED's, the register's are configured through a menu.
 I will explain the TWI (I2C) commands in this format: "TWI TX: "TWI_INSTANCE", "IS31_SLAVE_ADDRESS", "IS31_REGISTER", "IS31_DATA""
 
-1.
+#### 1.
 TWI TX: &m_twi, 0x74, 0xFD (COMMAND REG), 0x0B
-Description: Select the COMMAND REGISTER and write: 0x0B (0000 1011). By writing 0x0B the Function Register is available. Now we can access the Configuration Register (0x00), Picture Display Register (0x01), Auto Play Control Register 1 (0x02), Auto Play Control Register 2 (0x03), RESERVED, Display Option Register (0x05), Audio Synchronization Register (0x06), Frame State Register (0x07), Breath Control Register 1 (0x08), Breath Control Register 2 (0x09), Shutdown Register (0x0A), AGC Control Register (0x0B), Audio ADC Rate Register (0x0C)
 
-2.
+Description: Select the COMMAND REGISTER and write: 0x0B (0000 1011).
+By writing 0x0B the Function Register is available. Now we can access the Configuration Register (0x00), Picture Display Register (0x01), Auto Play Control Register 1 (0x02), Auto Play Control Register 2 (0x03), RESERVED, Display Option Register (0x05), Audio Synchronization Register (0x06), Frame State Register (0x07), Breath Control Register 1 (0x08), Breath Control Register 2 (0x09), Shutdown Register (0x0A), AGC Control Register (0x0B), Audio ADC Rate Register (0x0C)
+
+#### 2.
 TWI TX: &m_twi, 0x74, 0x0A (SHUTDOWN REG), 0x00
-Description: Select the SHUTDOWN REGISTER and write: 0x00 (0000 0000). The IS31 is now in shutdown mode.
+
+Description: Select the SHUTDOWN REGISTER and write: 0x00 (0000 0000).
+The IS31 is now in shutdown mode.
 
