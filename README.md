@@ -20,6 +20,16 @@ To control the LED's, the register's on the IS31 are configured through a menu. 
 
 Note: The IS31 can drive 144 LEDs. The Charlieplex comes with 105 LEDs. The remaining 39 LED's outputs must be off by LED control register (frame registers) else if on it will affect other LEDs.
 
+In the Charlieplex schematic we find which outputs with no LED: https://learn.adafruit.com/assets/32561
+
+It is:
+
+Matrix A: C1-1, C2-1, C3-1, C4-1, C5-1, C6-1, C7-1, C8-1, C9-1, C9-2, C9-3, C9-4, C9-5, C9-6, C9-7, C9-8
+
+Matrix B: C1-9, C1-10, C1-11, C1-12, C1-13, C1-14, C1-15, C1-16, C2-16, C3-16, C4-16, C5-16, C6-16, C7-16, C8-16, C9-9, C9-10, C9-11, C9-12, C9-13, C9-14, C9-15, C9-16
+
+All these outputs must remain off in the LED control register.
+
 I will explain the TWI (I2C) commands in this format: "TWI TX: "TWI_INSTANCE", "IS31_SLAVE_ADDRESS", "IS31_REGISTER", "IS31_DATA""
 
 #### 1. Make FUNCTION REGISTER AVAILABLE
