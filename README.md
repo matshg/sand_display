@@ -16,7 +16,54 @@ The accelerometer is simple to setup, look at the code. This document will focus
 Datasheet: http://www.issi.com/WW/pdf/31FL3731.pdf
 
 ### Register Control
-To control the LED's, the register's on the IS31 are configured through a menu. Here's how to turn on all 105 of the LED's.
+The register's on the IS31 are configured through a menu.
+
+#### 1. Select response register
+The first step is to select a response register. There are 9 response registers: 8 frame registers and 1 function registers. The 8 frames can be used to configure different LED arrangement. The function register is used to configure different modes/options.
+
+Example: To select frame 1: Initiate TWI tx amd write to address 0xFD (Command Register) the data: 0x00.
+
+#### 2. Configure Register
+##### 2.1 If you have selected Frame 1-8: We have 3 options. Configure LED Control Register, Blink Control Register, PWM Register
+
+LED Control Registers: 18 registers running from 0x00 - 0x11
+
+Blink Control Registers: 18 registers running from 0x12 - 0x23
+
+PWM Registers: 256 registers running from 0x24 - 0xB3
+
+##### 2.2 If you have selected Function Register:
+In this mode, we have 12 additional registers we can further configure.
+
+Configuration Register: Address: 0x00
+
+Picture Display Register: Address: 0x01
+
+Auto Play Control Register: Address: 0x02
+
+Auto Play Control Register 2: Address: 0x03
+
+Display Option Register: Address: 0x05
+
+Audio Synchronization Register: Address: 0x06
+
+Frame State Register (READ ONLY): Address: 0x07
+
+Breath Control Register: Address: 0x08
+
+Breath Control Register 2: Address: 0x09
+
+Shutdown Register: Address: 0x0A
+
+AGC Control Register: Address: 0x0B
+
+Audio ADC Rate Register: Address: 0x0C
+
+Read datasheet for more info on how to configure each register.
+
+
+#### Cross-Plexing (Charlieplexing)
+The required lines to drive all 144 LEDs are reduced to 18 by using the cross-plexing feature optimizing space on the PCB. It is why the LED Control/Blink Control Registers have 18 registers each. Additionally each of the 144 LEDs can be dimmed individually with 8-bit allowing 256 steps of linear dimming.
 
 Note: The IS31 can drive 144 LEDs. The Charlieplex comes with 105 LEDs. The remaining 39 LED's outputs must be off by LED control register (frame registers) else if on it will affect other LEDs.
 
