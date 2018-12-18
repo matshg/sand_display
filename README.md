@@ -18,6 +18,8 @@ Datasheet: http://www.issi.com/WW/pdf/31FL3731.pdf
 ### Register Control
 To control the LED's, the register's on the IS31 are configured through a menu. Here's how to turn on all 105 of the LED's.
 
+Note: The IS31 can drive 144 LEDs. The Charlieplex comes with 105 LEDs. The remaining 39 LED's outputs must be off by LED control register (frame registers) else if on it will affect other LEDs.
+
 I will explain the TWI (I2C) commands in this format: "TWI TX: "TWI_INSTANCE", "IS31_SLAVE_ADDRESS", "IS31_REGISTER", "IS31_DATA""
 
 #### 1. Make FUNCTION REGISTER AVAILABLE
